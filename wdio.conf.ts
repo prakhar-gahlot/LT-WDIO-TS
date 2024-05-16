@@ -9,13 +9,13 @@ export const config: Options.Testrunner = {
         }
     },
 
-    hostname: 'mobile-hub.lambdatest.com',
+    hostname: 'hub.lambdatest.com',
     port: 80,
     path: '/wd/hub',
-    baseUrl: "https://mobile-hub.lambdatest.com",
+    baseUrl: "https://hub.lambdatest.com",
 
-    user: "",
-    key: "",
+    user: "your username",
+    key: "your accesskey",
 
     services: [
         [
@@ -28,17 +28,21 @@ export const config: Options.Testrunner = {
     
     specs: [
         './test/specs/*.ts'
-
     ],
 
     maxInstances: 1,
-
     capabilities: [{
-        platformName: 'Android',
-        app: "lt://APP10160471181715630917005192",
-        "deviceName": "Pixel .*",
-        "platformVersion": "12",
-        "isRealMobile": true
+        browserName: "Chrome",
+        browserVersion: "124",
+        
+        'lt:options': { // Corrected syntax for LambdaTest options
+            username: "your username",
+            accessKey: "your accesskey",
+            platformName: "Windows 10",
+            project: "Untitled",
+            w3c: true,
+            plugin: "node_js-webdriverio"
+        }
     }],
 
     logLevel: 'info',
